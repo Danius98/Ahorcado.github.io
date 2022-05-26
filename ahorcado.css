@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Raleway:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&display=swap');
+
+:root{
+    --url-img: url(img/ahorcado.jpg);
+    --gradient: linear-gradient(135deg, #9dc5c3b8 0%, #5e5c5cc3 100%);
+    /*linear-gradient(135deg, #667eea 0%, #744ba27c 100%);*/
+    --width: 100%;
+    --height: 100%;
+    --padding: 10px;
+    --svg1: url(img/undraw_normal.svg);
+    --svg2: url(img/undraw_crypted.svg);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    background-image: var(--gradient), var(--url-img);
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+}
+
+.nav{
+    position: fixed;
+    display: flex;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background: rgb(99, 99, 99);
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1{
+    margin-left: 1rem;
+    font: 18px;
+    color: #fff;
+}
+
+.enlaces{
+    color: #fff;
+    text-decoration: none;
+    line-height: 70px;
+    padding: 0 20px;
+    display: inline-block;
+    margin-left: 2px;
+}
+
+.enlaces:hover{
+    background: rgb(255, 241, 241);
+    color: gray;
+}
+
+@media screen and (max-width:800px){
+    .encriptador{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:675px){
+    .nav{
+        flex-direction: column;
+    }
+
+    h1{
+        margin: 0
+    }
+
+    .encriptador{
+        width: 90%;
+    }
+
+    .enlaces{
+        transform: translateY(-5px);
+    }
+
+    .enlaces:hover{
+        color: lightblue;
+        background: none;
+    }
+}
+
+@media screen and (max-width:600px){
+    .encriptador{
+        padding: 15px 10px 20px 10px;
+    }
+
+    .encriptador__mensaje{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width:577px){
+    .encriptador{
+        padding: 15px 10px 20px 10px;
+    }
+
+    .encriptador__mensaje{
+        flex-direction: column;
+    }
+
+    #normal, #encriptado{
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-size: 100% 180px;
+    }
+
+    .encriptador__texto{
+        min-height: 180px;
+    }
+}
