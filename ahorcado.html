@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encriptador Alura</title>
+    <title>Ahorcado</title>
     <link rel="stylesheet" href="ahorcado.css">
 </head>
 <body>
@@ -15,7 +15,15 @@
         <a href="#contacto" class="enlaces">Portafolio</a>
         </p>
     </nav>
-
-    <script src="encriptador.js"></script>
+    <div class="ahorcado">
+        <canvas></canvas>
+        <div class="ahorcado letras__usadas"></div>
+    </div>
+    <div class="juego">
+        <div class="letras__usadas"></div>
+        <div class="letras__contenedor"></div>
+        <button class="boton__inicio" onclick="startGame()"></button>
+    </div>
+    <script src="ahorcado.js"></script>
 </body>
 </html>

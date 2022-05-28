@@ -57,6 +57,16 @@ h1{
     color: gray;
 }
 
+.ahorcado{
+    margin: 70px auto;
+}
+
+.boton__inicio{
+    text-align: center;
+    width: 10%;
+    height: 40px;
+}
+
 @media screen and (max-width:800px){
     .encriptador{
         width: 90%;
