@@ -57,14 +57,34 @@ h1{
     color: gray;
 }
 
-.ahorcado{
-    margin: 70px auto;
+.juego{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.juego__ahorcado{
+    margin: 100px auto;
+}
+
+.juego__letras{
+    margin: 0 auto;
 }
 
 .boton__inicio{
     text-align: center;
-    width: 10%;
+    width: 200px;
     height: 40px;
+    background-color: gray;
+    color: #fff;
+    font: 20px;
+    border: none;
+}
+
+.boton__inicio:hover{
+    background-color: #fff;
+    color: gray;
+    cursor: pointer;
 }
 
 @media screen and (max-width:800px){

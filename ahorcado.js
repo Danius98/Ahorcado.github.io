@@ -16,28 +16,43 @@ const bodyParts = [
     [5, 3, 1, 1]
 ]
 
+let palabraUsada;
+let letrasUtilizadas;
+let errores;
+let intentos;
+
+function selectWord() {
+    let word = words[Math.floor((Math.random() * words.length))].toUpperCase();
+    selectedWord = word.split('');
+    alert(selectedWord)
+}
+
 function drawHangMan(){
-    hanged.canvas.width = 240;
-    hanged.canvas.height = 280;
-    hanged.scale(20, 20);
+    hanged.canvas.width = 180;
+    hanged.canvas.height = 300;
+    hanged.scale(30, 30);
     hanged.clearRect(0, 0, canvas.width, canvas.height);
-    hanged.fillRect(0, 7, 4, 1);
-    hanged.fillRect(1, 0, 1, 8);
-    hanged.fillRect(2, 0, 3, 1);
-    hanged.fillRect(4, 1, 1, 1);
+    hanged.fillRect(0, 9, 4, 1);
+    hanged.fillRect(1, 0, 1, 9);
+    hanged.fillRect(2, 0, 4, 1);
+    hanged.fillRect(5, 1, 1, 1);
 }
 
 function startGame(){
+    letrasUtilizadas = [];
+    errores = 0;
+    intentos = 0;
+    letrasContenedor.innerHTML = '';
+    letrasUsadas.innerHTML = '';
+    boton__inicio.style.display = 'none';
     drawHangMan();
+    selectWord();
 }
 
-let palabraUsada;
-let letrasUsada;
-let errores;
-let intentos;
+
 
 function addLetter(letter){
     const letterElement = document.createElement('span');
     letterElement.innerHTML = letter.toUpperCase();
-    letrasUsadas.appendChild(letterElement);
+    letrasUtilizadas.appendChild(letterElement);
 }

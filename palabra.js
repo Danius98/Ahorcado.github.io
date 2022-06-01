@@ -1,0 +1,1 @@
+const words = ["Aguila", "Ballena", "Concha", "Dinosaurio", "Elefante", "Foca", "Gato", "Horno", "Iguana", "Jirafa", "Kilometro", "Lobo", "Mapa", "Nuevo", "Oscuridad", "Perro", "Queso", "Rumania", "Sudafrica", "Torero", "Uganda", "Velocidad", "Walter", "Xilofono", "Yeso", "Zapatero"]

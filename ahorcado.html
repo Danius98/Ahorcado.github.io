@@ -15,15 +15,18 @@
         <a href="#contacto" class="enlaces">Portafolio</a>
         </p>
     </nav>
-    <div class="ahorcado">
-        <canvas></canvas>
-        <div class="ahorcado letras__usadas"></div>
-    </div>
     <div class="juego">
-        <div class="letras__usadas"></div>
-        <div class="letras__contenedor"></div>
-        <button class="boton__inicio" onclick="startGame()"></button>
+        <div class="juego__ahorcado">
+            <canvas></canvas>
+            <div class="ahorcado letras__usadas"></div>
+        </div>
+        <div class="juego__letras">
+            <div class="letras__usadas"></div>
+            <div class="letras__contenedor"></div>
+            <button class="boton__inicio" onclick="startGame()">¡Inicia el juego!</button>
+        </div>
     </div>
     <script src="ahorcado.js"></script>
+    <script src="palabra.js"></script>
 </body>
 </html>
