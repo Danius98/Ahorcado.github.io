@@ -21,12 +21,6 @@ let letrasUtilizadas;
 let errores;
 let intentos;
 
-function selectWord() {
-    let word = words[Math.floor((Math.random() * words.length))].toUpperCase();
-    selectedWord = word.split('');
-    alert(selectedWord)
-}
-
 function drawHangMan(){
     hanged.canvas.width = 180;
     hanged.canvas.height = 300;
@@ -38,6 +32,22 @@ function drawHangMan(){
     hanged.fillRect(5, 1, 1, 1);
 }
 
+function selectWord() {
+    let word = words[Math.floor((Math.random() * words.length))].toUpperCase();
+    palabraUsada = word.split('');
+    alert(palabraUsada)
+}
+
+function drawWord(){
+    palabraUsada.forEach(letter => {
+        const letterElement = document.createElement('span');
+        letterElement.innerHTML = letter.toUpperCase();
+        letterElement.classList.add('letter'); // añade la clase letter para su edicion en css
+        letterElement.classList.add('hidden'); // añade la clase hidden para su edicion en css
+        letrasContenedor.appendChild(letterElement);
+    });
+}
+
 function startGame(){
     letrasUtilizadas = [];
     errores = 0;
@@ -47,12 +57,47 @@ function startGame(){
     boton__inicio.style.display = 'none';
     drawHangMan();
     selectWord();
+    drawWord();
+    document.addEventListener('keydown', letterEvent);
 }
 
-
+function endGame(){
+    document.removeEventListener('keydown', letterEvent);
+    boton__inicio.style.display = "block";
+}
 
 function addLetter(letter){
     const letterElement = document.createElement('span');
     letterElement.innerHTML = letter.toUpperCase();
-    letrasUtilizadas.appendChild(letterElement);
+    letrasUsadas.appendChild(letterElement);
 }
+
+function correctLetter(letter){
+    const { children } = letrasContenedor;
+    alert(children)
+    for(let i = 0; i < children.length; i++){
+        if(children[i].innerHTML === letter){
+            children[i].classList.toggle('hidden');
+            intentos++
+        }
+    }
+    if(intentos === palabraUsada.length) endGame();
+}
+
+function letterInput(letter){
+    if(palabraUsada.includes(letter)){
+        correctLetter(letter);
+    } else {
+        wrongLetter();
+    }
+    addLetter(letter);
+    letrasUtilizadas.push(letter);
+}
+
+function letterEvent(event){
+    let newLetter = event.key.toUpperCase();
+    if(newLetter.match(/^[a-zñ]$/i) && !letrasUtilizadas.includes(newLetter)){
+        letterInput(newLetter);
+    }
+}
+
