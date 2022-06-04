@@ -72,6 +72,11 @@ function addLetter(letter){
     letrasUsadas.appendChild(letterElement);
 }
 
+function addBodyPart(bodyParts){
+    hanged.fillStyle = "#fff";
+    hanged.fillRect(...bodyParts);
+}
+
 function correctLetter(letter){
     const { children } = letrasContenedor;
     alert(children)
@@ -82,6 +87,12 @@ function correctLetter(letter){
         }
     }
     if(intentos === palabraUsada.length) endGame();
+}
+
+function wrongLetter(){
+    addBodyPart(bodyParts[errores]);
+    errores++;
+    if(errores === bodyParts.length) endGame();
 }
 
 function letterInput(letter){
