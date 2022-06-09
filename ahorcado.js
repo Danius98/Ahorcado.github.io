@@ -86,7 +86,7 @@ function letterInput(letter){
 
 function correctLetter(letter){
     const { children } = letrasContenedor;
-    alert(children)
+    //alert(children)
     for(let i = 0; i < children.length; i++){
         if(children[i].innerHTML === letter){
             children[i].classList.toggle('hidden');
