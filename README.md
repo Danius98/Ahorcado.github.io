@@ -53,4 +53,4 @@ Esta funcion se invoca en la funcion letterinput cuando nos equivocamos en la le
 
 Esta funcion se invoca tanto como acertamos la palabra como si superamos la cantidad de intentos en correctletter y wrongLetter respectivamente. Removemos el evento el cual añadimos letras cada vez que apretamos una letra y hacemos que el boton de inicio se muestre para reiniciar el juego invocando la funcion startGame.
 
-Link de trello adjuntado 
+Link de trello adjuntado https://trello.com/b/8I6wH6fo/ahorcado
