@@ -8,12 +8,12 @@ hanged.canvas.width = 10;
 hanged.canvas.height = 10;
 
 const bodyParts = [
-    [4, 2, 1, 1],
-    [4, 3, 1, 2],
-    [3, 5, 1, 1],
-    [5, 5, 1, 1],
-    [3, 3, 1, 1],
-    [5, 3, 1, 1]
+    [5, 2, 1, 1],
+    [5, 3, 1, 2],
+    [4, 5, 1, 1],
+    [6, 5, 1, 1],
+    [4, 3, 1, 1],
+    [6, 3, 1, 1]
 ]
 
 let palabraUsada;
@@ -22,7 +22,7 @@ let errores;
 let intentos;
 
 function drawHangMan(){
-    hanged.canvas.width = 180;
+    hanged.canvas.width = 210;
     hanged.canvas.height = 300;
     hanged.scale(30, 30);
     hanged.clearRect(0, 0, canvas.width, canvas.height);
@@ -35,7 +35,7 @@ function drawHangMan(){
 function selectWord() {
     let word = words[Math.floor((Math.random() * words.length))].toUpperCase();
     palabraUsada = word.split('');
-    alert(palabraUsada)
+    //alert(palabraUsada)
 }
 
 function drawWord(){
@@ -46,6 +46,13 @@ function drawWord(){
         letterElement.classList.add('hidden'); // añade la clase hidden para su edicion en css
         letrasContenedor.appendChild(letterElement);
     });
+}
+
+function letterEvent(event){
+    let newLetter = event.key.toUpperCase();
+    if(newLetter.match(/^[a-zñ]$/i) && !letrasUtilizadas.includes(newLetter)){
+        letterInput(newLetter);
+    }
 }
 
 function startGame(){
@@ -61,38 +68,10 @@ function startGame(){
     document.addEventListener('keydown', letterEvent);
 }
 
-function endGame(){
-    document.removeEventListener('keydown', letterEvent);
-    boton__inicio.style.display = "block";
-}
-
 function addLetter(letter){
     const letterElement = document.createElement('span');
     letterElement.innerHTML = letter.toUpperCase();
     letrasUsadas.appendChild(letterElement);
-}
-
-function addBodyPart(bodyParts){
-    hanged.fillStyle = "#fff";
-    hanged.fillRect(...bodyParts);
-}
-
-function correctLetter(letter){
-    const { children } = letrasContenedor;
-    alert(children)
-    for(let i = 0; i < children.length; i++){
-        if(children[i].innerHTML === letter){
-            children[i].classList.toggle('hidden');
-            intentos++
-        }
-    }
-    if(intentos === palabraUsada.length) endGame();
-}
-
-function wrongLetter(){
-    addBodyPart(bodyParts[errores]);
-    errores++;
-    if(errores === bodyParts.length) endGame();
 }
 
 function letterInput(letter){
@@ -105,10 +84,36 @@ function letterInput(letter){
     letrasUtilizadas.push(letter);
 }
 
-function letterEvent(event){
-    let newLetter = event.key.toUpperCase();
-    if(newLetter.match(/^[a-zñ]$/i) && !letrasUtilizadas.includes(newLetter)){
-        letterInput(newLetter);
+function correctLetter(letter){
+    const { children } = letrasContenedor;
+    alert(children)
+    for(let i = 0; i < children.length; i++){
+        if(children[i].innerHTML === letter){
+            children[i].classList.toggle('hidden');
+            intentos++
+        }
+    }
+    if(intentos === palabraUsada.length){
+        endGame()
+        alert("¡Ganaste, felicidades!");
     }
 }
 
+function addBodyPart(bodyParts){
+    hanged.fillStyle = "#fff";
+    hanged.fillRect(...bodyParts);
+}
+
+function wrongLetter(){
+    addBodyPart(bodyParts[errores]);
+    errores++
+    if(errores === bodyParts.length){
+        endGame(); 
+        alert("Perdiste, la palabra era " + palabraUsada) 
+    } 
+}
+
+function endGame(){
+    document.removeEventListener('keydown', letterEvent);
+    boton__inicio.style.display = "block";
+}
